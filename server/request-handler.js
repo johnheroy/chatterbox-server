@@ -12,9 +12,7 @@ var clientPath = '../client';
 var chatLog = './chatlog.txt';
 var controller  = require('./controller');
 var results = [];
-results.push({text: 'yolotrollo', username: 'sharkbait', createdAt: new Date(), roomname: 'lobby'});
-results.push({text: '#burningman', username: 'kobra', createdAt: new Date(), roomname: 'lobby'});
-results.push({text: 'date night with my hubby, tacobell! ;) #blessed', username: 'magee', createdAt: new Date(), roomname: 'lobby'});
+
 var routes = {
   classes: {
     'GET': controller.get,
@@ -22,7 +20,6 @@ var routes = {
     'OPTIONS': controller.options
   }
 };
-
 
 exports.handleRequest = function(request, response) {
   var parsedUrl = url.parse(request.url).pathname.split('/');
@@ -83,9 +80,9 @@ var serveStaticFile = function(pathName, req, res){
     if(!exists){
       absolutePathname = path.join(__dirname, '../client/404.html');
     }
-    console.log()
+    console.log();
     fs.readFile(absolutePathname, function(err, data){
-      console.log(data)
+      console.log(data);
       res.writeHead(200, {'Content-Type': contentType});
       res.write(data + '');
       res.end();
